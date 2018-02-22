@@ -18,12 +18,36 @@ public class JsonUtils {
 
         try {
             JSONObject jsonSandwich = new JSONObject(json);
+            
+            if(!jsonSandwich.has("name")) {
+                throw new Exception("Key "name" is missing.");
+            }
             JSONObject name = jsonSandwich .getJSONObject("name");
             String mainName = name.getString("mainName");
+            
+            if(!jsonSandwich.has("alsoKnownAs")) {
+                throw new Exception("Key "alsoKnownAs" is missing.");
+            }
             JSONArray alsoKnownAs = name.getJSONArray("alsoKnownAs");
+            
+            if(!jsonSandwich.has("placeOfOrigin")) {
+                throw new Exception("Key "placeOfOrigin" is missing.");
+            }
             String placeOfOrigin = jsonSandwich .getString("placeOfOrigin");
+            
+            if(!jsonSandwich.has("description")) {
+                throw new Exception("Key "description" is missing.");
+            }
             String description = jsonSandwich .getString("description");
+            
+            if(!jsonSandwich.has("image")) {
+                throw new Exception("Image URL is missing.");
+            }
             String imageUrl = jsonSandwich .getString("image");
+            
+            if(!jsonSandwich.has("ingredients")) {
+                throw new Exception("Key "ingredients" is missing.");
+            }
             JSONArray ingredients = jsonSandwich .getJSONArray("ingredients");
 
             //No exceptions were thrown, so I can create the sandwich object
